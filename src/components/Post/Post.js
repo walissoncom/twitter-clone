@@ -10,7 +10,7 @@ import PublishIcon from '@material-ui/icons/Publish';
 import './Post.css';
 
 function Post({
-    diplayName,
+    displayName,
     username,
     verified,
     text,
@@ -20,24 +20,24 @@ function Post({
     return (
         <div className="post">
             <div className="post__avatar">
-                <Avatar src="https://pbs.twimg.com/profile_images/923341083777441792/u5u0GCOs_x96.jpg" />
+                <Avatar src={avatar} />
             </div>
             <div className="post__body">
                 <div className="post__header">
                     <div className="post__headerText">
                         <h3>
-                            Walisson Rodrigues{" "}
+                            {displayName}{" "}
                             <span className="post__headerSpecial">
-                                <VerifiedUserIcon className="post__badge" />
-                                @walisson
+                                {verified && <VerifiedUserIcon className="post__badge" />}
+                                @{username}
                             </span>
                         </h3>
                     </div>
                     <div className="post__headerDescription">
-                        <p>Making a Twitter clone feels like</p>
+                        <p>{text}</p>
                     </div>
                 </div>
-                <img src="https://media4.giphy.com/media/MC6eSuC3yypCU/giphy.gif" alt="Post Image" />
+                <img src={image} alt="Post Image" />
                 <div className="post__footer">
                     <ChatBubbleOutlineIcon fontSize="small" />
                     <RepeatIcon fontSize="small" />
