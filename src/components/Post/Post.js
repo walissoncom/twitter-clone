@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import { Avatar } from '@material-ui/core';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
@@ -9,16 +9,9 @@ import PublishIcon from '@material-ui/icons/Publish';
 
 import './Post.css';
 
-function Post({
-    displayName,
-    username,
-    verified,
-    text,
-    image,
-    avatar
-}) {
+const Post = forwardRef(({ displayName, username, verified, text, image, avatar }, ref) => {
     return (
-        <div className="post">
+        <div className="post" ref={ref}>
             <div className="post__avatar">
                 <Avatar src={avatar} />
             </div>
@@ -37,7 +30,7 @@ function Post({
                         <p>{text}</p>
                     </div>
                 </div>
-                <img src={image} alt="Post Image" />
+                <img src={image} alt="Post" />
                 <div className="post__footer">
                     <ChatBubbleOutlineIcon fontSize="small" />
                     <RepeatIcon fontSize="small" />
@@ -47,6 +40,6 @@ function Post({
             </div>
         </div>
     )
-}
+})
 
 export default Post;

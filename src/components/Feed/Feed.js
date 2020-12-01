@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import FlipMove from 'react-flip-move';
 
 import storage from '../../firebase';
 
@@ -36,19 +37,22 @@ function Feed() {
             <TweetBox />
 
             {/* Post */}
-            {
-                Object.keys(posts).map(id => {
-                    return <div key={id}>
-                        <Post
-                            avatar={posts[id].avatar}
-                            displayName={posts[id].displayName}
-                            username={posts[id].username}
-                            verified={posts[id].verified}
-                            text={posts[id].text}
-                            image={posts[id].image} />
-                    </div>
-                })
-            }
+            <FlipMove>
+                {
+                    Object.keys(posts).reverse().map(id => {
+                        return (
+                            <Post
+                                key={id}
+                                avatar={posts[id].avatar}
+                                displayName={posts[id].displayName}
+                                username={posts[id].username}
+                                verified={posts[id].verified}
+                                text={posts[id].text}
+                                image={posts[id].image} />
+                        )
+                    })
+                }
+            </FlipMove>
         </div>
     )
 }
